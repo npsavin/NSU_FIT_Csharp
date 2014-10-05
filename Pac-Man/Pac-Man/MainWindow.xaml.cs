@@ -18,34 +18,12 @@ namespace Pac_Man
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : NavigationWindow
     {
         public MainWindow()
         {
             InitializeComponent();
         }
 
-
-        private void Start_game(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Извини, я не успел написать игру =(");
-        }
-
-        private void Best_score(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Никто не получил ни одного очка");
-        }
-
-        private void Settings(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Выключите, пожалуйста, антивирус");
-        }
-
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Извините, кнопка не работает");
-            Close();
-            MessageBox.Show("ХАХА НАЕБАЛ ЛООООЛ");
-        }
     }
 }
