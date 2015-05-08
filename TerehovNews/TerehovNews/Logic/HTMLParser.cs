@@ -24,7 +24,7 @@ namespace TerehovNews.Logic
             var final = preFinal.Substring(0, preFinal.IndexOf("</div>"));
             final = final.Replace("<p>", "");
             final = final.Replace("</p>", "");
-            var forDelete = final.Substring(final.IndexOf("<"), final.Length - final.IndexOf(">")-1);
+            var forDelete = final.Substring(final.IndexOf("<"), final.Length -( final.IndexOf(">") - final.IndexOf("<")));
             final = final.Replace(forDelete, "");
             return final;
 
