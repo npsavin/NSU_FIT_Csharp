@@ -30,7 +30,7 @@ namespace TerehovNews.Logic
         {
             foreach (var i in  feeds.Items)
             {
-
+                var a = i.ToString();
                 var uniqid = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Id);
                 var title = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Title.Text);
                 var summary = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Summary.Text);
