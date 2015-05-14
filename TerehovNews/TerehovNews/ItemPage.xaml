@@ -32,21 +32,22 @@
 
         <!--Панель заголовка-->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
-            <TextBlock x:Uid="Header" Text="application name" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" />
-            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,-6.5,0,26.5" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            <TextBlock  x:Uid="Header" Text="application name" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0" />
+            <TextBlock Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,-6.5,-0.167,26.5" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}" Height="1"/>
         </StackPanel>
 
         <!-- 
             TODO: Содержимое должно быть помещено в следующую сетку, 
                   чтобы показать сведения для текущего элемента
         -->
-        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,10,0,0">
+        <Grid Grid.Row="1" x:Name="ContentRoot" Margin="10,0,0,0" Height="573" VerticalAlignment="Bottom">
+            
             <ScrollViewer Height="Auto"
                           Width="Auto"
                       VerticalAlignment="Top">
-                <TextBlock  Name="TextBlock"  HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="Auto" Width="Auto" />
+                <TextBlock  Name="TextBlock" FontSize="18"  HorizontalAlignment="Left" Margin="10,5,0,0" TextWrapping="Wrap" Text="TextBlock"  VerticalAlignment="Top" Height="Auto" Width="Auto" />
             </ScrollViewer>
-            
+
 
         </Grid>
     </Grid>

@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using TerehovNews.Logic;
 
@@ -32,13 +33,18 @@ namespace TerehovNews
         private readonly ObservableDictionary defaultViewModel = new ObservableDictionary();
 
         public ItemPage()
-        {  
+        {
+           
             this.InitializeComponent();
             this.navigationHelper = new NavigationHelper(this);
             this.navigationHelper.LoadState += this.NavigationHelper_LoadState;
             this.navigationHelper.SaveState += this.NavigationHelper_SaveState;
-
             
+        }
+
+        private BitmapImage BitmapImage(Uri uri)
+        {
+            throw new NotImplementedException();
         } 
 
         /// <summary>

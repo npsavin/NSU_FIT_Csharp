@@ -11,9 +11,9 @@ namespace TerehovNews.Logic
     public static class RSSParser
     {
         private static List<SampleDataItem> _listNews = new List<SampleDataItem>();
-        private static SyndicationFeed feeds = new SyndicationFeed();
+        private static SyndicationFeed feedsLenta = new SyndicationFeed();
 
-        private const string Chanel = "http://lenta.ru/rss/news";
+        private const string Lenta = "http://lenta.ru/rss/news";
 
         public static List<SampleDataItem> GetListNews()
         {
@@ -22,25 +22,35 @@ namespace TerehovNews.Logic
 
         public static async Task Update()
         {
-            feeds = await new SyndicationClient().RetrieveFeedAsync(new Uri(Chanel));
+            feedsLenta = await new SyndicationClient().RetrieveFeedAsync(new Uri(Lenta));
             
         }
 
         public static void UpdateList()
         {
-            foreach (var i in  feeds.Items)
+            foreach (var i in  feedsLenta.Items)
             {
-                var a = i.ToString();
+                var xml = i.GetXmlDocument(feedsLenta.SourceFormat);
                 var uniqid = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Id);
                 var title = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Title.Text);
                 var summary = Windows.Data.Html.HtmlUtilities.ConvertToText(i.Summary.Text);
                 var subtittle = Windows.Data.Html.HtmlUtilities.ConvertToText(i.PublishedDate.ToString());
                 
+                var xmlfirst = xml.GetElementsByTagName("category");
+                string category;
+                if (xmlfirst.Length > 0)
+                {
+                    category = xmlfirst[0].InnerText;
+                }
+                else
+                {
+                    category = "";
+                }
                 
                 
                 
 
-                var feed = new SampleDataItem(uniqid, title, summary, subtittle);
+                var feed = new SampleDataItem(uniqid, title, summary, subtittle, category);
 
                 _listNews.Add(feed);
             }

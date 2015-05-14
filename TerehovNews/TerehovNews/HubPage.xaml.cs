@@ -1,27 +1,11 @@
-﻿using TerehovNews.Common;
-using TerehovNews.Data;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System;
 using Windows.ApplicationModel.Resources;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using TerehovNews.Common;
+using TerehovNews.Data;
 using TerehovNews.Logic;
 
 //  Документацию по шаблону "Приложение с Hub" см. по адресу http://go.microsoft.com/fwlink/?LinkId=391641
@@ -109,20 +93,6 @@ namespace TerehovNews
         {
             var groupId = ((SampleDataGroup)e.ClickedItem).UniqueId;
             if (!Frame.Navigate(typeof(SectionPage), groupId))
-            {
-                throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
-            }
-        }
-
-        /// <summary>
-        /// Показывает сведения об элементе, который щелкнул пользователь, в объекте <see cref="ItemPage"/>
-        /// </summary>
-        private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            // Переход к соответствующей странице назначения и настройка новой страницы
-            // путем передачи необходимой информации в виде параметра навигации
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
-            if (!Frame.Navigate(typeof(ItemPage), itemId))
             {
                 throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
             }

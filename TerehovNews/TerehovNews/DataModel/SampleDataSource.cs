@@ -28,12 +28,14 @@ namespace TerehovNews.Data
         public string Title { get;  set; }
         public string Subtitle { get; set; }
         public string Description { get;  set; }
-        public SampleDataItem(String uniqueId, String title, String description, String subtitle)
+        public string Category { get; set; }
+        public SampleDataItem(String uniqueId, String title, String description, String subtitle, String Category)
         {
             this.UniqueId = uniqueId;
             this.Title = title;
             this.Description = description;
             this.Subtitle = subtitle;
+            this.Category = Category;
         }
 
         
@@ -113,9 +115,10 @@ namespace TerehovNews.Data
             List<SampleDataGroup> ListGroup = new List<SampleDataGroup>
             {
                 new SampleDataGroup("Культура", "Культура"),
+                new SampleDataGroup("Наука и техника", "Наука и техника"),
+                new SampleDataGroup("Финансы", "Финансы"),
                 new SampleDataGroup("Спорт", "Спорт"),
-                new SampleDataGroup("Мир", "Мир"),
-                new SampleDataGroup("Россия", "Россия")
+                new SampleDataGroup("Мир", "Мир")
             };
 
             foreach (var groupObject in ListGroup)
@@ -125,12 +128,15 @@ namespace TerehovNews.Data
 
                 foreach (var itemValue in RSSParser.GetListNews())
                 {
-                    
+                    if (group.UniqueId == itemValue.Category)
+                    {
                         group.Items.Add(new SampleDataItem(
                             itemValue.UniqueId,
                             itemValue.Title,
                             itemValue.Description,
-                            itemValue.Subtitle));
+                            itemValue.Subtitle,
+                            itemValue.Category));
+                    }
                 }
                 this.Groups.Add(group);
             }
